@@ -17,6 +17,7 @@ formEl.addEventListener("submit", function (e) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data); // Check to see to see data
       displayBooks(data.results.books);
     })
     .catch((error) => {
@@ -26,6 +27,11 @@ formEl.addEventListener("submit", function (e) {
 
 const displayBooks = (books) => {
   booksContainer.innerHTML = "";
+  // If no book is found, display the message fot this.
+  if (!books || books.length === 0) {
+    booksContainer.innerHTML = '<p>No books found for this date.</p>';
+    return;
+  }
   books.slice(0, 5).forEach((book) => {
     const bookElement = document.createElement("div");
     const bookImageUrl = book.book_image; // For extra credit: for Bestselling Books, also display the image for each book
