@@ -29,7 +29,7 @@ const displayBooks = (books) => {
   booksContainer.innerHTML = "";
   // If no book is found, display the message fot this.
   if (!books || books.length === 0) {
-    booksContainer.innerHTML = '<p>No books found for this date.</p>';
+    booksContainer.innerHTML = '<p>No books found for this date. Please select a different date.</p>';
     return;
   }
   books.slice(0, 5).forEach((book) => {
